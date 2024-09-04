@@ -13,7 +13,7 @@
 */
 console.log(3+3); console.log(2+2); //not a good practice
 
-console.log();
+console.log(1/0);
 
 let name = "Raj"
 let age = 21
@@ -77,3 +77,15 @@ userTwo.email = "Rajendra@gmai.com"
 
 console.log(userOne);
 console.log(userTwo);
+
+
+let a = function(){};
+//type of
+
+console.log(typeof name)
+console.log(typeof age)
+console.log(typeof islogin)
+console.log(typeof state)
+console.log(typeof no)
+console.log(typeof userOne)
+console.log(typeof a)
