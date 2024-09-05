@@ -19,3 +19,37 @@ for (let i = 0; i < 10; i++) {
   console.log("after continue")
   console.log('')
 }
+
+
+console.log('')
+
+for (let index = 0; index < 5; ++index) {
+  console.log(index)
+}
+console.log('')
+
+for (let index = 0; index < 5; index++) {
+  console.log(index)
+}
+
+console.log('')
+
+for (let index = 0; index < 5; index++) {``  
+   index % 2 && console.log(index) 
+}
+console.log('')
+
+for (let index = 0; index < 5; index++) {``  
+   index % 2 || console.log(index) 
+}
+
+console.log('priem number')
+
+prime:
+for (let i = 2; i < 10; i++) {``  
+   for(let j = 2; j < i; j++){
+    if(i % j == 0) continue prime
+   }
+   console.log(i)
+}
+
