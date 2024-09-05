@@ -16,17 +16,20 @@ if (1 || 0) { // works just like if( true || false )
 
   console.log( 1 || 0 ); // 1 (1 is truthy)
 
-console.log( null || 1 ); // 1 (1 is the first truthy value)
-console.log( null || 0 || 1 ); // 1 (the first truthy value)
-
-console.log( undefined || null || 0 ); // 0 (all falsy, returns the last value)
+console.log( null || 1 );
+console.log( null || 0 || 1 ); 
+console.log( undefined || null || 0 ); 
 
 let firstName = "";
 let lastName = "";
 let nickName = "SuperCoder";
 
-console.log( firstName || lastName || nickName || "Anonymous"); // SuperCoder
+console.log( 'OR',firstName || lastName || nickName || "Anonymous"); 
+//here whatever first truthy value OR|| operator will get, it will return it.
+//if no truthy value is present in expression then OR will return last value present in expression.
 
+console.log('AND', firstName && lastName && nickName && "Anonymous"); 
+//AND returns the first falsy value or the last value if none were found.
 
 // if the first operand is truthy,
 // AND returns the second operand:
