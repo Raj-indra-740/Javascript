@@ -28,4 +28,4 @@ for(let key in user){
     console.log([key, user[key]])
 }
 
-//object order is depend on porperty type if it string which conversion is possible in integer then it will order in ascending order, but if it non-integer then it order in cration order
+//object order is depend on property type if it string which conversion is possible in integer then it will order in ascending order, but if it non-integer then it order in creation order
