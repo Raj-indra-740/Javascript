@@ -75,3 +75,11 @@ original.nested.self = original;
 const clone = deepClone(original);
 console.log(clone);
 console.log(clone.nested.self === clone); 
+
+//console.log(structuredClone(original))  //will throw error, because it can not able to clone symbol
+
+original.symbol = null 
+let newClone = structuredClone(original)  //now work fine because we remove symbol.
+
+console.log(newClone);
+console.log(newClone.nested.self === newClone); 
