@@ -43,3 +43,43 @@ const obj2 = JSON.parse(stringData2, (key, value) => {
 
 console.log(obj2)
 console.log(obj2.date instanceof Date); // true
+
+console.log(' ')
+
+let room = {
+  number: 23
+};
+
+let meetup = {
+  title: "Conference",
+  occupiedBy: [{name: "John"}, {name: "Alice"}],
+  place: room
+};
+
+// circular references
+room.occupiedBy = meetup;
+meetup.self = meetup;
+
+const seen = new WeakSet();
+
+let circular =  JSON.stringify(meetup, function replacer(key, value) {
+  if (typeof value === "object" && value !== null) {
+    if (seen.has(value)) {
+      return; // Circular reference found, omit it
+    }
+    seen.add(value);
+  }
+  return value;
+});
+
+console.log(circular)
+/* result should be:
+{
+  "title":"Conference",
+  "occupiedBy":[{"name":"John"},{"name":"Alice"}],
+  "place":{"number":23}
+}
+*/
+
+log(globalThis)
+log(this)
