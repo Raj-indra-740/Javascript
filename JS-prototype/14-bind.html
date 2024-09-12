@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>Click Me hard!!</button>
+</body>
+<script>
+    class React {
+        constructor(){
+            this.library = "React"
+            this.server = "http://localhost:3000"
+
+            document
+                .querySelector('button')
+                .addEventListener('click', this.handleClick.bind(this))  //it is binding all data with handlClick function using "this"
+        }
+
+        handleClick(){
+            console.log("button clicked");
+            console.log(this.server);
+        }
+    }
+    const app = new React()
+
+    function printFullNameTwo(){
+    console.log(this.firstName+" "+this.lastName);
+    }
+    const user1 = {
+    firstName: "raj",
+    lastName: "Chaudhari"
+    }
+    let newFuc = printFullNameTwo.bind(user1);
+    newFuc()
+</script>
+</html>
