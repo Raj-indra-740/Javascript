@@ -42,7 +42,7 @@ function deepClone(obj, map = new WeakMap()) {
     }
 
     // Handle Symbols
-    const clone = Object.create(Object.getPrototypeOf(obj));
+    const clone = Object.create(Object.getPrototypeOf(obj));  //create empty object with prototype of original
     map.set(obj, clone);
 
     // Handle Symbol properties and regular properties
