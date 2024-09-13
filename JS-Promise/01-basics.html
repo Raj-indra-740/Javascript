@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Callback hell</h1>
+</body>
+<script>
+    //one thing at a time -> Javascript
+    
+    //pyramid od nested calls is called callback hell or pyramid of doom
+    //The “pyramid” of nested calls grows to the right with every asynchronous action. Soon it spirals out of control. 
+   
+    function loadScript(src, callback){
+        let script = document.createElement('script');
+        script.src = src
+
+        script.onload = callback(null, script)   
+        script.onerror = callback(new Error(`Script load error for ${src}`)) 
+
+        document.head.append(script);
+    }
+    
+    loadScript('../JS-Data-Types/01-basics.js', function(error, script){
+        if(error){
+            console.log(error)
+        }
+        else{
+            loadScript('../JS-Data-Types/02-numbers.js', function(error, script){
+                if(error){
+                    console.log(error)
+                }
+                else{
+                    loadScript('../JS-Data-Types/03-string.js', function(error, script){
+                        if(error){
+                            console.log(error)
+                        }
+                        else{
+                            console.log('callback hell ended')
+                        }
+                    })
+                }
+            })
+        }
+    })
+
+
+    //Callback hell:  when multiple functionality have dependency to execute one after another we use callback has helping hand but when this dependency grow to much and create callback chain horizontally it become callback hell.which are difficult to mange.
+    //inversion of control: with this callback hell we also handover over control over calling this function to parent one. which is to risky.
+    //giving control of our code to other part code can lead to unexpected bug  
+</script>
+
+</html>
+
