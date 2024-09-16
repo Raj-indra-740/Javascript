@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>one</p>
+    <p>two</p>
+    <p>three</p>
+    <p>four</p>
+    <p>five</p>
+
+<script>
+const log = console.log;
+
+const topElementOfDoc = document.documentElement
+const headElement = document.head
+const bodyElement = document.body
+log({topElementOfDoc, headElement, bodyElement})
+log(bodyElement)
+
+//DOM collection are live
+for(let node of bodyElement.childNodes){
+    log(node)
+}
+
+//ALERT:do not use for in loop because we can get some unwanted enumerable property
+
+// for(let node in bodyElement.childNodes){
+//     log( bodyElement.childNodes[node])
+// }
+
+
+log(bodyElement.parentElement)
+log(bodyElement.firstElementChild)
+log(bodyElement.lastElementChild)
+log(bodyElement.previousElementSibling)
+
+
+// For all nodes: parentNode, childNodes, firstChild, lastChild, previousSibling, nextSibling.
+// For element nodes only: parentElement, children, firstElementChild, lastElementChild, previousElementSibling, nextElementSibling.
+</script>
+</body>
+</html>

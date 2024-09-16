@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Practice</title>
+    <style>
+        body{
+            background-color: #212120;
+            color: aliceblue;
+            width: 800px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="first">
+        <div class="heading" id="head">
+            <h1 id="head1">
+                Rajendra Mohan Chaudhari
+            </h1>
+        </div>
+        <hr>
+
+        <div class="skills">
+            <ul class="list">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>Javascript</li>
+                <li>React Js</li>
+            </ul>
+        </div>
+    </div>
+    <div class="second">
+        <div class="headin2"></div>
+        <div class="Edu_lsit"></div>
+    </div>
+    <div class="third">
+        <div class="discription">
+            <h2>My Self</h2>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore, dolorum. Quod maxime tenetur placeat? Sunt, recusandae quo itaque quae ratione illum hic labore quos in expedita maiores! Possimus illo nostrum quis, nemo laborum iure blanditiis, laboriosam aliquid commodi atque voluptatum!</p>
+        </div>
+    </div>
+    <div class="fourth">
+        
+    </div>
+    
+</body>
+<script>
+    //parent node selected
+    const myDiv = document.querySelector('.second')
+    const myHead = myDiv.childNodes[1]
+    const myList = myDiv.childNodes[3]
+
+    //first child node is created 
+    const H2 = document.createElement('h2')
+    H2.appendChild(document.createTextNode('Education'))
+
+    myHead.appendChild(H2)
+
+    //second child node to created
+    const List = document.createElement('ol')
+    List.className = 'Edu'
+    myList.appendChild(List)
+
+    function addEducation(course,cllgName){
+        const Li = document.createElement('li')
+        Li.appendChild(document.createTextNode(`${course} at ${cllgName}`))
+        List.appendChild(Li)
+    }
+    
+    addEducation("BE","Pacific School Of Engineering")
+    addEducation("HSC","Lions International School")
+    addEducation("SSC","Saraswati Vidya Mandir")
+
+    //changes in first Div
+    const firstDiv = document.querySelectorAll('div')
+    const skillclass=firstDiv[2]
+
+    const title = document.createElement('h2')
+    title.appendChild(document.createTextNode('Skills'))
+    skillclass.prepend(title)
+
+
+    //adding profile photo
+    const image = document.createElement('img')
+    image.src = "Rajendra Chaudhari.jpg"
+    image.style.width = "80px"
+    image.style.height = "80px"
+    image.style.borderRadius = "70%"
+
+    //appending image tag
+    const titleDiv = document.querySelectorAll('div')
+    titleDiv[1].style.display = "flex"
+    titleDiv[1].style.gap = "20px"
+    titleDiv[1].prepend(image)
+
+
+    //fourth Div for Certificates
+
+    // const fourth = document.getElementsByClassName("fourth")
+    const fourth = document.querySelector(".fourth")
+
+    const certy = document.createElement('h2')
+    certy.appendChild(document.createTextNode('Certificate'))
+    fourth.appendChild(certy)
+
+    const certyDiv = document.createElement('div')
+    fourth.appendChild(certyDiv)
+    console.log(certyDiv)
+    function addCertyName(name){
+        const certyName = document.createElement('h3')
+        certyName.appendChild(document.createTextNode(name))  //when passing argument in function not to use ""/'' 
+        certyDiv.appendChild(certyName)
+        
+    }
+    function addCertyYear(year){
+        const certyDate = document.createElement('h4')
+        certyDate.appendChild(document.createTreeWalker(year)) //just pass argument 
+        certyDiv.appendChild(certyDate)
+    }
+    function addcertyInfo(info){
+        const certyInfo = document.createElement('p')
+        certyInfo.appendChild(document.createTextNode(info))
+        certyDiv.appendChild(certyInfo)
+    }
+    addCertyName("Code Unnati Program (SAP) (2023-2024)")
+    addcertyInfo("the training on Emerging Technologies (Artificial Intelligence, Internet of Things, & Enterprise Resource Planning) .")
+
+    //test area
+    // console.log(myDiv) 
+    // console.log(myHead)
+    // console.log(myList)
+    // console.log(firstDiv)
+    // console.log(document.querySelector('.first'))
+    // console.log(document.getElementsByClassName('heading'))
+    console.log(fourth)
+</script>
+</html>
