@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <script>
+        document.onclick = function(e) { // shows click coordinates
+        coords.innerHTML = e.clientX + ':' + e.clientY;
+        };
+  </script>
+  
+</head>
+
+<body>
+
+  <p>
+    Click anywhere to get window coordinates.
+  </p>
+  <div id="coords">
+    (click coordinates show up here)
+  </div>
+</body>
+</html>
