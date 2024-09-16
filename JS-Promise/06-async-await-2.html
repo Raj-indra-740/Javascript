@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Async-await</h2>
+</body>
+<script>
+
+const promise1 = new Promise((resolve,reject) => {
+    setTimeout(() => resolve('this promise 1'), 10000)
+})
+const promise2 = new Promise((resolve,reject) => {
+    setTimeout(() => resolve('this promise 2'), 5000)
+})
+
+const promise3 = new Promise((resolve,reject) => 0)
+
+async function greet(){
+    try {
+        console.log('normal call in async function')
+
+        let valOne = await promise1;
+        console.log('after p1 but i am normal')
+        console.log(valOne)
+
+        let valTwo = await promise2;
+        console.log('after p2 but i am normal')
+        console.log(valTwo)
+        //both console wil come together 
+        //first console will print normally
+        //then p1 will get suspend till it get resolve,by removing from calls stack temporary
+        //after p1 is resolve greet function start execution form where it as stopped
+        //print both console
+    
+        //then it encounter p2 but p2 is already resolve so it immediately execute this promise other code after that     
+    }
+    catch (error) {
+        console.log(error)
+    }
+}
+
+greet()
+
+
+</script>
+</html>

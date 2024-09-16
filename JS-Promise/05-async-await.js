@@ -1,3 +1,6 @@
+//async function always return promise
+//await is keyword only be used inside an async function
+
 let userName = ['Raj7405', 'iliakan', 'remy', 'jeresig'];
 async function loadUserData(){
     try{
@@ -17,4 +20,18 @@ async function loadUserData(){
         console.error(err)
     }
 }
-loadUserData()
+// loadUserData()
+
+const promise1 = new Promise((resolve,reject) => {
+    setTimeout(() => resolve('this promise 1'), 10000)
+})
+const promise2 = new Promise((resolve,reject) => {
+    setTimeout(() => resolve('this promise 2'), 5000)
+})
+
+const promise3 = new Promise((resolve,reject) => 0)
+function greet(){
+    console.log(promise3)
+}
+
+greet()
