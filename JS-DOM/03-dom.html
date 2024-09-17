@@ -6,33 +6,48 @@
     <title>Document</title>
 </head>
 <body>
-    <div id = "outer">
-        <p id="inner">this is inner element</p>
+    <div class="main" id="firstDiv" name="number">
+        <div id="secondDiv" name="number">
+            <p value="one" name="odd">one</p>
+            <p value="two" name="even">two</p>
+            <p value="three" name="odd">three</p>
+            <p value="four" name="even">four</p>
+            <p value="five" name="odd">five</p>
+        </div>
     </div>
 
+    <div id="elem" about="Elephant"></div>
 <script>
-    let outerDiv = document.querySelector('#outer')
-    outerDiv.style.border = '2px black solid'
-    let innerP = document.querySelector('#inner')
-    innerP.style.border = '2px black dotted'
-    innerP.style.margin = '15px'
-
-    function changeColor(element,color){
-        element.style.backgroundColor = color
+    let p = document.querySelectorAll('p')
+    for(let item of p){
+        if(item.matches('p[name="odd"]')){
+            console.log(item)
+        }
     }
-    outerDiv.addEventListener('click', function(){
-        changeColor(this,'red')
-        console.log('1')
-    })
+
+    let five = document.querySelector('p[value="three"]')
     
-    innerP.addEventListener('click', function(){
-        changeColor(this,'yellow')
-        console.log('2')
-    })
+    //looks for the nearest ancestor that matches the CSS-selector
+    console.log(five.closest('div[name="number"]'))  
+    console.log(five.closest('#firstDiv'))
 
 
+    // elem.hasAttribute(name) – checks for existence.
+    // elem.getAttribute(name) – gets the value.
+    // elem.setAttribute(name, value) – sets the value.
+    // elem.removeAttribute(name) – removes the attribute.
 
-    innerP
+    console.log( elem.getAttribute('About') ); // (1) 'Elephant', reading
+
+    elem.setAttribute('Test', 123); // (2), writing
+
+    console.log( elem.outerHTML ); // (3), see if the attribute is in HTML (yes)
+
+    for (let attr of elem.attributes) { // (4) list all
+         console.log( `${attr.name} = ${attr.value}` );
+    }
+
+    //All attributes starting with “data-” are reserved for programmers’ use. They are available in the dataset property.
 </script>
 </body>     
 </html>

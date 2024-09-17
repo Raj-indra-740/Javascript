@@ -26,14 +26,15 @@
 
   <table id="studentTable">
     <thead>
-      <tr>
+      <!-- id="row" only given to testing purpose -->
+      <tr id="row"> 
         <th>ID</th>
         <th>Name</th>
         <th>Age</th>
         <th>Grade</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody id="row">
       <tr>
         <td>1</td>
         <td>John Doe</td>
@@ -80,6 +81,9 @@
 
     log(table.lastElementChild.lastElementChild.firstElementChild.cellIndex)
     //this will give index number for cell in row
+
+
+    // console.log(document.querySelector('#row'))
 </script>
 
 </body>
