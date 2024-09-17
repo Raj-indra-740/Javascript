@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            height: 400px;
+            border: 1px solid black;
+            background-color: aqua;
+            margin: auto;
+        }
+        .ball{
+            position: absolute;
+            background-color: yellow;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            transition: 1s all;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+    </div>
+
+
+    <script>
+        const container = document.querySelector('.container')
+        let ball = document.createElement('div')
+        ball.classList.add('ball')
+        container.append(ball)
+
+        // function calcCoordinate(event){
+        //     return{top: event.clientX, left: event.clientY}
+        // }
+
+        function calcCoordinate(event) {
+            const containerRect = container.getBoundingClientRect();
+            let top = event.clientY - containerRect.top - ball.offsetHeight / 2;
+            let left = event.clientX - containerRect.left - ball.offsetWidth / 2;
+
+            if (top < 0) top = 0; 
+            if (left < 0) left = 0; 
+            if (top + ball.offsetHeight > container.offsetHeight) {
+                top = container.offsetHeight - ball.offsetHeight; 
+            }
+            if (left + ball.offsetWidth > container.offsetWidth) {
+                left = container.offsetWidth - ball.offsetWidth; 
+            }
+
+            return { top, left };
+        }
+
+        function changePosition(top,left, element){
+            element.style.top = `${top}px`;
+            element.style.left = `${left}px`;
+        }
+
+        const ballElement = document.querySelector('.ball')
+        container.addEventListener('click', function(){
+            let {top, left} = calcCoordinate(event)
+            changePosition(top, left, ballElement)
+        })
+    </script>
+</body>
+</html>
