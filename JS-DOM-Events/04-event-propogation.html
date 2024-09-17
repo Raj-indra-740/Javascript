@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="outerMost" style="border: 3px solid red; padding: 15px; text-align: center;">
+        <div id="middle" style="border: 3px solid green; padding: 15px;">
+            <p id="innerMost" style="border:3px solid yellow; padding: 15px;">
+                Hello!
+            </p>
+        </div>
+    </form>
+    <script>
+        // The process is called “bubbling”, because events “bubble” from the inner element up through parents like a bubble in the water.
+        function changeBGColor(e,element, color){
+            console.log(e.target)
+            element.style.backgroundColor = color
+        }
+        const outerMost = document.querySelector('#outerMost')
+        const middle = document.querySelector('#middle')
+        const innerMost = document.querySelector('#innerMost')
+
+        outerMost.addEventListener('click', function(event){
+            changeBGColor(event, this, 'red')
+            alert([event.currentTarget.tagName, event.target])
+        })
+        middle.addEventListener('click', function(event){
+            changeBGColor(event, this, 'green')
+            alert([event.currentTarget.tagName, event.target])
+        },{capture:true})
+        innerMost.addEventListener('click', function(event){
+            changeBGColor(event, this, 'yellow')
+            alert([event.currentTarget.tagName, event.target])
+        },{capture:true})
+
+
+        //event delegation
+        // outerMost.addEventListener('click', function(event){
+        //     if(event.target.id === 'middle'){
+        //         changeBGColor(event, event.target,'green')
+        //     }
+        //     else if(event.target.id === 'innerMost'){
+        //         changeBGColor(event, event.target, 'yellow')                
+        //     }
+        //     else{
+        //         changeBGColor(event, event.target, 'red')
+        //     }
+        // })
+
+        //on click on hello, event go from inner -> middle -> outer
+    </script>
+</body>
+</html>
