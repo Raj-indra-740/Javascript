@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>Click me</button>
+
+    <script>
+        const myEvent = new Event('myCustomEvent')
+        const button = document.querySelector('button')
+        button.addEventListener('custom:doubleClick', e =>{
+            console.log('double click' )
+        })
+        
+        const MAX_DOUBLE_CLICK_TIME = 500;
+        let lastClick = 0;
+
+        button.addEventListener('click', function(e){
+            const timeBtwClicks = timeStamp - lastClick;
+            if(timeBtwClicks > MAX_DOUBLE_CLICK_TIME){
+                lastClick = e.timeStamp;
+                return
+            }
+
+            const doubleClickEvent = new CustomEvent("custom:doubleClick", {
+                bubbles:true,
+                cancelable:true,
+                composed:true,
+                detail:{
+                    timeBtwClicks,
+                }
+            })
+            
+            e.target.dispatchEvent(doubleClickEvent);
+            lastClick = 0;
+        })
+
+    </script>
+</body>
+</html>
